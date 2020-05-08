@@ -1,0 +1,32 @@
+<div *ngIf="componentUsers" class="container mt-5">
+    <h3 class="text-muted">Usuarios registrados</h3>
+      <div class="dv-table shadow p-3  bg-white rounded ">
+          
+      <table class="table" *ngIf="hayRegistros(); else sin">
+        <tr>
+          <th>ID</th>
+          <th>NOMBRE</th>
+          <th>TELEFONO</th>
+          <th>EMAIL</th>
+          <th>BORRAR</th>
+          <th>SELECCIONAR</th>
+        </tr>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.idUsuario }}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.telefono }}</td>
+          <td>{{ usuario.email }}</td>
+          <td> <button class="btn btn-sm btn-danger" (click)="bajaUsuario(usuario.idUsuario)">Borrar </button></td>
+          <td> <button class="btn btn-sm btn-dark" (click)="seleccionarUsuario(usuario.idUsuario)" >Modificar</button></td>
+        </tr>
+        </table>
+      </div>
+      <ng-template #sin>
+        <p>No hay usuarios registrados.</p>
+      </ng-template>
+  </div>
+  <app-form  *ngIf="componentForm"
+            [usuario]="usuario"
+            (enviarUsuarios) = "usuarios=$event"
+            >
+  </app-form>
