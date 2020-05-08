@@ -30,4 +30,8 @@ export class UsuariosService {
     return this.http.post(this.url  + 'EditarUsuario.php', JSON.stringify(usuario));
 
   }
+
+  pruebasGit(){
+    alert('pruebas con github');
+  }
 }
